@@ -1,0 +1,159 @@
+================================================================
+  ONLINE LIBRARY MANAGEMENT SYSTEM - HOW TO RUN
+================================================================
+
+PROJECT OVERVIEW
+----------------
+This is a PHP + MySQL web application for managing a library.
+It includes an Admin Panel and a User (Student) Panel.
+
+
+================================================================
+  REQUIREMENTS
+================================================================
+
+- XAMPP (Apache + MySQL must be running)
+- Files must be in: C:\xampp\htdocs\library\
+- Database: MySQL (via XAMPP)
+
+
+================================================================
+  FIRST-TIME SETUP
+================================================================
+
+STEP 1 — Copy Project Files
+  Copy the entire project folder to:
+    C:\xampp\htdocs\library\
+
+STEP 2 — Open XAMPP Control Panel
+  Run: C:\xampp\xampp-control.exe
+  Click START on: Apache
+  Click START on: MySQL
+
+STEP 3 — Create Database
+  Open your browser and go to:
+    http://localhost/phpmyadmin/
+
+  Login to phpMyAdmin:
+    Username : root
+    Password : (leave empty)
+
+  Then:
+    1. Click "New" in the left sidebar
+    2. Database name: library
+    3. Collation: utf8mb4_general_ci
+    4. Click "Create"
+    5. Click the "library" database
+    6. Go to "Import" tab
+    7. Choose file: SQL file\library.sql
+    8. Click "Go"
+
+STEP 4 — Open the Project
+  Admin Panel : http://localhost/library/admin/
+  User Panel  : http://localhost/library/
+
+
+================================================================
+  PASSWORDS & CREDENTIALS
+================================================================
+
+--- DATABASE (MySQL) ---
+  Host     : localhost
+  Port     : 3306
+  Username : root
+  Password : (empty — no password)
+  Database : library
+
+  Config file location:
+    admin\includes\config.php
+
+--- ADMIN LOGIN ---
+  URL      : http://localhost/library/admin/
+  Username : admin
+  Password : Test@123
+  Email    : admin@gmail.com
+
+--- USER / STUDENT LOGIN ---
+  Users are registered by the admin from the admin panel.
+  After the admin registers a student, the student can log in at:
+    URL      : http://localhost/library/
+
+
+================================================================
+  HOW TO RUN (EVERY TIME)
+================================================================
+
+1. Open XAMPP Control Panel:
+     C:\xampp\xampp-control.exe
+
+2. Click START next to Apache  (Port: 80)
+3. Click START next to MySQL   (Port: 3306)
+
+4. Open browser:
+     Admin : http://localhost/library/admin/
+     Users : http://localhost/library/
+
+5. Login with credentials above.
+
+
+================================================================
+  PROJECT FILE STRUCTURE
+================================================================
+
+online-library-management-system\
+  admin\                  — Admin panel pages
+    includes\
+      config.php          — Database connection settings
+      header.php
+      footer.php
+    index.php             — Admin login page
+    dashboard.php         — Admin dashboard
+    manage-books.php
+    manage-authors.php
+    manage-categories.php
+    manage-issued-books.php
+    reg-students.php
+    issue-book.php
+    add-book.php
+    add-author.php
+    add-category.php
+    bookimg\              — Book cover images
+    assets\               — CSS, JS, fonts
+  SQL file\
+    library.sql           — Database dump (import this)
+  HOW_TO_RUN.txt          — This file
+
+
+================================================================
+  TROUBLESHOOTING
+================================================================
+
+Problem : "Access denied for user root"
+Fix     : Make sure XAMPP MySQL is running (not MySQL 9.7).
+          Open XAMPP Control Panel and check MySQL shows green.
+
+Problem : Page not found / 404
+Fix     : Make sure files are in C:\xampp\htdocs\library\
+          Make sure Apache is running in XAMPP.
+
+Problem : Database error
+Fix     : Import library.sql again via phpMyAdmin.
+          Check admin\includes\config.php — DB_PASS must be ''.
+
+Problem : Apache port conflict
+Fix     : Another app may be using port 80. In XAMPP Config,
+          change Apache to port 8080 and access via
+          http://localhost:8080/library/admin/
+
+
+================================================================
+  NOTES
+================================================================
+
+- Always start XAMPP BEFORE opening the browser.
+- The project uses XAMPP's MySQL (MariaDB), NOT MySQL 9.7.
+- Do NOT start MySQL 9.7 service at the same time as XAMPP
+  MySQL — they both use port 3306 and will conflict.
+- To stop: click STOP on Apache and MySQL in XAMPP Control Panel.
+
+================================================================
